@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: gray;
+        }
+        .first{
+            color: red;
+        }
+        .second{
+            color: green;
+        }
+        #btn1{
+            color: blue;
+        }
+        .text-red{
+            color: red;
+        }
+        text-red.text-green{   /*all those that contain both red and green*/
+            color: purple;
+        }
+        span.text-red.text-green{   /*all those that contain both red and green and type is span*/
+            color: greenyellow;
+        }
+        div>span{  /* span needs to be direct child of div*/
+            color: cadetblue;
+        }
+        div span{  /* any child of div can be span, doesn't have to be direct*/
+            color: cadetblue;
+        }
+
+        *{
+            /* applies to all elements */
+            font-size: 20px;
+            border: 0.5px dashed;
+            border-radius: 3px;
+        }
+
+        div *{
+            /* all elements that come inside a div */
+        }
+        div p *{
+            /* all elements that come inside p and that p should be inside div */
+        }
+        div div div p{
+            /* p inside three div will be eeffected */
+        }
+        a[href]{
+            /* all anchors (a) that have href attributes */
+        }
+        [some-attr='anything']{
+            /* must have "some-attr" attribute with content text of "anything". This is more complicated/advanced selector. */
+        }
+
+        /* precedence order: combination > id > class > tags*/
+    </style>
+</head>
+<body>
+    <button class="first" id="btn1">First</button>
+    <button class="second" id="btn2">Second</button>
+
+    <h2 class="text-red">Heading h2</h2>
+
+    <h1 class="text-red text-green">Some Content</h1>
+    <span class="text-red text-green">Some Content</span>
+    <h1>Some Content</h1>
+    <h1>Some Content</h1>
+    <h1>Some Content</h1>
+</body>
+</html>

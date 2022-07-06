@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>June 13, 2022</title>
+</head>
+
+<body>
+    <script>
+        // Hoisting in JS means you can declare var anywhere in the body, order doesn't matter. It will be pulled to the top automatically. 
+        number = 45;
+        console.log(number);
+        var number;
+
+        // debugger 
+        number = 10;
+        console.log(number);
+        number = 20;
+        console.log(number);
+
+        // difference between == and ===
+        1 == '1' // true, checks value, similar to equals() in Java
+        1 === '1' // false, value match, but datatypes doesn't match, one is int and other is string. check both datatypes AND value. 
+        console.log(1 == '1');
+        console.log(1 === '1');
+        console.log(Symbol('pen') == Symbol('pen')); // false, like different objects, same value, but not same. two different entity. 
+
+        // var vs let
+        console.log(num);
+        var num; // works 'undefined', no exception error. But with let it doesn't work. Var function scoped, let block scoped. 
+
+        function something() {
+            if (1 == 1) {
+                var number;
+                number = 10;
+            }
+            console.log(number); // number variable is still accessible outside the if block, because var is function-scoped.
+            
+            // if(2==2){
+            //     let number2;
+            //     number2 = 20;
+            // }
+            // console.log(number2); // number2 variable is not accesible. because let is block-scoped, ooutside block you cannot access, unless declared outisde the block.  (anything after exception doesn't work, thus commented.) 
+
+        }
+        something();
+
+        // NaN not a number
+        console.log(parseInt('345')); // auto casting happens here, string to int since JS is dynamic, same with Java though. 
+        console.log(Number('a')); // NaN == Not A Number, if we pass a value as non-number where number is expected, then we get NaN in return. 
+
+        let number1 = Number('1asbcf');
+        if(number1 == NaN){
+            let result = number1 * 30;
+            console.log(result);
+        }else {
+            console.log('Invalid');
+        }
+
+        let number3 = Number('1asbcf');
+        if(isNaN(number3)){
+            let result = number3 * 30;
+            console.log(result);
+        }else {
+            console.log('Invalid');
+        }
+
+        // call a function inside another function
+        function sayHello(){
+            console.log('Hello');
+        }
+
+        function sayHi(){
+            console.log('Hi');
+        }
+
+        function Greet(anyName){
+            anyName(); // if value is here, line 94 is applicable. 
+        }
+
+        Greet(sayHello);
+        Greet(sayHi);
+
+        // Arrow function
+        Greet(
+            function sayHi(){
+            console.log('Hi');
+        }
+        )
+        Greet(()=> console.log('Hi'));
+        Greet((value)=> console.log(value)); // with value 
+
+        // pass by value VS pass by reference
+        
+    
+
+    </script>
+</body>
+
+</html>

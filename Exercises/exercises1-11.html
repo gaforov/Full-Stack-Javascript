@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises 1-11</title>
+</head>
+
+<body>
+    <script>
+        // 1. create a function that will print "Hello" on console 5 times
+        // ===> displayHelloFiveTime();
+
+        for (let i = 0; i < 5; i++) {
+            console.log('Hello');
+        }
+
+        // Same above exercise inside a function - more dynamic version. 
+
+        function displayHello(number) {
+            for (let i = 0; i < number; i++) {
+                // const element = array[i];
+                console.log('Hello');
+            }
+        }
+        displayHello(5);
+        displayHello(3);
+
+        /* 2. create two variables A and B, create more if required write code to swap their values, 
+        eg. A=5,B=6 ,then after execution B=5, A=6 */
+        let a = 5;
+        let b = 6;
+        console.log('a = ' + a);
+        console.log('b = ' + b);
+
+        // First way
+        let z = a + b; // 5 + 6 = 11
+        a = b; // a = 6
+        b = z - a; // 6 = 11-6; b = 5
+        console.log('a = ' + a);
+        console.log('b = ' + b);
+
+        // Second way
+        [a, b] = [b, a]
+        console.log('a = ' + a);
+        console.log('b = ' + b);
+
+        // Third way with 3rd temp container
+        let c = a; // let c var hold a value for us while we swap a with b. 
+        a = b;
+        b = c;
+        console.log('a = ' + a);
+        console.log('b = ' + b);
+
+        // Create a function that will print if passed number is even or odd
+        // ==> eg. evenOddCheck(6) should display "Even"
+
+        function findOddEvenNumber(number) {
+            if (number % 2 == 0) {
+                console.log('Even');
+            } else {
+                console.log('Odd');
+            }
+        }
+        
+        findOddEvenNumber(4);
+        findOddEvenNumber(5);
+        
+        console.log('---------------------');
+        function findOddEvenNumber2(value) {
+            if (value % 2 == 0) {
+                // console.log('Even');
+                return "Even"
+            } else {
+                // console.log('Odd');
+                return 'Odd'
+            }
+        }
+        let result = findOddEvenNumber2(8);
+        console.log(result);
+        result = findOddEvenNumber2(9);
+        console.log(result);
+
+
+        // 5.create a function that will return greatest number between two numbers
+        // ==> let value = greatest(15,35); ===> value should be 35
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* Notes:
+        LENGTH is always there in every string
+        strings are zero index based
+        SUBSTRING gives you specific portion from the string
+        INDEXOF gives you the index of charector and first 
+        by considering first occurence
+        CHARAT will give you a single character at specific position.
+        SPLIT gives you a new collection/array which is created by 
+        separating your string with a character
+        REPEAT() repeats the main string a number of time 
+        INCLUDES() searches if the specified string is present or not.
+        */
+
+        let message = 'Welcome';
+        let result = message.repeat(3);
+        console.log(result);
+
+        message = 'Hello everybody is welcome here'
+        result = message.split(' ');
+        console.log(result);
+        console.log(message.charAt(0));
+        console.log(message.indexOf('w'));
+        console.log(message.includes('here'));
+
+        message = ['Hi', 'Hello', 'Welcome'];
+        result = message.join('_');
+        console.log(result);
+        message.push('Bye'); // add this value at the end of existing array
+        console.log(message);
+        message.unshift('Howdy') // add value at the beginning of the array
+        console.log(message);
+        message.pop(); // Remove lat value from the array
+        console.log(message);
+        message.shift() // removes from the beginning of the array
+        console.log(message);
+
+        let message2 = ['Apple', 'Banana'];
+        let concatResult = message.concat(message2);
+        console.log(concatResult);
+
+        for (const iterator of concatResult) {
+            console.log(iterator);
+        }
+
+        concatResult.forEach(element => {
+            console.log(element);
+        });
+
+        let array1 = ['Apple', 'Banana', 'Pineapple', 'Kiwi', 'Orange'];
+        let array2 = [34, 45, 66, 23, 56, 2, 345, 23];
+
+        // Retrieve array names which start with letter 'a'. [case sensitive]
+        array1 = array1.filter(names => (names.startsWith('A')))
+        console.log(array1);
+        // another way
+        array1 = array1.filter(names => (names[0] == 'A'))
+        console.log(array1);
+
+
+        // Retrieve even numbers from given array 
+        array2 = array2.filter(number => (number % 2 == 0));
+        console.log(array2);
+        array2 = array2.filter(number => (number >= 25));
+        console.log(array2);
+
+        // let items = [
+        //     { id: 1, name: 'John' }, 
+        //     { id: 2, name: 'Tom' }, 
+        //     { id: 3, name: 'Jack' }
+        //     { id: 4, name: 'Emily' }
+        // ];
+        // console.log(items.name);
+
+        let numbers = [30, 23, 45, 66, 67, 100, 20];
+        numbers = numbers.map(item => (item.toString()))
+        console.log(numbers);
+        numbers = numbers.map(item => ('Said'))
+        console.log(numbers);
+
+        let stringNumbers = ['30', '23', '45', '66', '67', '100', '20'];
+        stringNumbers = stringNumbers.map(item => Number(item));
+        console.log(stringNumbers);
+        stringNumbers = stringNumbers.map(item => parseInt(item));
+        console.log(stringNumbers);
+        stringNumbers = stringNumbers.map(item => +item);
+        console.log(stringNumbers);
+        
+
+    </script>
+</body>
+
+</html>

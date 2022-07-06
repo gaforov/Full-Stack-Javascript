@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>June 9th, 2022</title>
+</head>
+
+<body>
+    <div>
+        <label for="name">Product Name</label>
+        <input type="text" name="name" id="name">
+    </div>
+    <div></div>
+    <div></div>
+
+    <script>
+
+        let newFruits = ['Pear', 'Cherry']
+        // let fruits = ['mango', 'Apple', newFruits, 'Orange', 'Pineapple']; // inserts an array inside existing array
+        let fruits = ['Mango', 'Apple', ...newFruits, 'Orange', 'Pineapple']; // ... three dots before the array name will fix this. 
+        console.log(fruits);
+
+        // fruits.splice(1, 2, 'kiwi', 'watermelon');
+        // console.log(fruits);
+
+
+    </script>
+</body>
+
+</html>

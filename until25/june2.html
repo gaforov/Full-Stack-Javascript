@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    Hi!!!!
+
+    <script>
+        let fruits = ['apple', 'banana', 'pineapple', 'mango'];
+        console.log(fruits);
+        // convert to uppercase:
+        fruits = fruits.map(fruit => fruit.toUpperCase());  // use map, NOT filter. 
+        console.log(fruits);
+
+        function showMessage(msg) {
+            console.log(msg + "Hi there!");
+        }
+        showMessage('Welcome, ');
+        showMessage(123.95);
+
+        // another way to create a function:
+        let myFunction = function () {
+            console.log("Hi there you too!");
+        }
+        // myFunction();
+
+        // let anotherFunction = myFunction;
+
+        // anotherFunction();
+
+
+
+        // function logArray(array, isUpper, isLower){
+        //     for (const item of array) {
+        //         if(isUpper){
+        //             console.log(item.toUpperCase);
+        //         }
+        //     }
+        // }
+
+        // logArray(fruits2);
+
+        console.log('---------------------------');
+
+        let fruits2 = ['apple', 'Banana', 'pineapple', 'Mango', 'Kiwie'];
+        let fruits3 = ['apple'];
+        
+        function lastLetterE(array) {
+            for (const item of array) {
+                if (item[item.length - 1] == 'e') {
+                    console.log(item);
+                }
+            }
+        }
+
+        lastLetterE(fruits2);
+        console.log('******************');
+        lastLetterE(fruits3);
+
+
+    </script>
+</body>
+
+</html>

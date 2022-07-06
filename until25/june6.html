@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>June 6th, 2022</title>
+</head>
+
+<body>
+    <script>
+
+        // Single Object
+        let user1 = {
+            name: 'Mike',
+            alias: 'mk2',
+            password: 'mk1234',
+            address: {
+                street: '123 Main St',
+                city: 'Los Angeles',
+                state: 'CA'
+            }
+        }
+        console.log(user1.name);
+        console.log(user1.address);
+        console.log(user1.address.city);
+        console.log(user1);
+        console.log('---------------');
+
+        // Array of Objects
+        let mobiles = [
+            {
+                brandName: 'Samsung',
+                modelName: 'S22',
+                price: 850,
+                dicount: 10,
+                imageUrl: 'http://unplash.it/32/32'
+            },
+            {
+                brandName: 'Apple',
+                modelName: 'iPhone 13',
+                price: 950,
+                dicount: 15,
+                imageUrl: 'http://unplash.it/32/32'
+            },
+            {
+                brandName: 'Xiaome',
+                modelName: 'K40',
+                price: 500,
+                dicount: 10,
+                imageUrl: 'http://unplash.it/32/32'
+            }
+        ]
+
+        console.log(mobiles[1]); // Object at given index is chosen. 
+        console.log(mobiles[1].brandName); // Object at given index is chosen. 
+        console.log('---------------');
+
+        for (const iterator of mobiles) {
+            console.log(iterator.brandName);
+        }
+
+        // Exercise: Print this:
+        // Apple iPhone 13 at 950, Samsung S22 at 850, etc. 
+        for (const iterator of mobiles) {
+            console.log(iterator.brandName + " " + iterator.modelName + " at " + "$" + iterator.price);
+        }
+
+        // re-assigning array of object. Content is overriden with new objects. 
+        console.log('******************'); 
+        mobiles = [
+            {
+                brandName: 'OnePlus',
+                modelName: '10',
+                price: 750,
+                discount: 0,
+                imageUrl: 'http://unplash.it/32/32'
+            }
+        ]
+        for (const iterator of mobiles) {
+            console.log(iterator.brandName + " " + iterator.modelName + " at " + "$" + iterator.price);
+        }
+
+        // push() will add to existing array
+        console.log('===========================');  // remove [] for push(obj inside) to work. 
+        mobiles.push(
+            {
+                brandName: 'Sony',
+                modelName: '20',
+                price: 800,
+                discount: 0,
+                imageUrl: 'http://unplash.it/32/32'
+            })
+
+        for (const iterator of mobiles) {
+            console.log(iterator.brandName + " " + iterator.modelName + " at " + "$" + iterator.price);
+        }
+
+        // concatination rules, if starts with String - rest will be string unless given priority inside paranthesis. 
+        console.log(12 + 10 + '13');
+        console.log('12' + 10 + 13);
+        console.log('12' + (10 + 13));
+
+    </script>
+</body>
+
+</html>

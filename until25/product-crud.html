@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Products</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <label>Product Name</label> <input type="text" id="name">
+        </div>
+        <div>
+            <label>Product Brand</label> <input type="text" id="brand">
+        </div>
+        <div>
+            <label>Product Price</label> <input type="number" id="price">
+        </div>
+        <div>
+            <button onclick="addNewRow()">Save</button>
+            <button onclick="resetForm()">Reset</button>
+        </div>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="products">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // data storage
+        let mobiles = [
+            {
+                brandName: 'Xiome',
+                modelName: 'K40',
+                price: 232432,
+            },
+            {
+                brandName: 'Samsung',
+                modelName: 'S6',
+                price: 78989,
+            }, {
+                brandName: 'Apple',
+                modelName: '13',
+                price: 897987,
+            }
+        ]
+
+
+        function populateGrid() {
+            document.getElementById('products').innerHTML = ""
+            for (const item of mobiles) {
+
+                let name = item.modelName;
+                let brand = item.brandName;
+                let price = item.price;
+
+                document.getElementById('products').innerHTML +=
+                    `<tr>
+                    <td>${name}</td>
+                    <td>${brand}</td>
+                    <td>${price}</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>`
+
+            }
+        }
+
+        populateGrid()
+
+        function addNewRow() {
+            let newItem = {
+                brandName: document.getElementById('brand').value,
+                modelName: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+            }
+
+            mobiles.push(newItem)
+            populateGrid()
+            resetForm()
+            alert("Product added successfully!")
+        }
+
+        function resetForm() {
+            document.getElementById('brand').value = ""
+            document.getElementById('name').value = ""
+            document.getElementById('price').value = ""
+        }
+    </script>
+</body>
+
+</html>

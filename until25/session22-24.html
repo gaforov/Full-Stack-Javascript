@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session 22</title>
+</head>
+
+<body>
+    <!-- <form action="">  Cannot use form in this case, because default behavior of button in any form is 'submit'. -->
+    <div>
+        <label for="name">Product Name</label>
+        <input type="text" name="name" id="name">
+    </div>
+    <div>
+        <label for="brand">Product Brand</label>
+        <input type="text" name="brand" id="brand">
+    </div>
+    <div>
+        <label for="price">Product Price</label>
+        <input type="number" name="price" id="price">
+    </div>
+    <div>
+        <label for="date">Release Date</label>
+        <input type="date" name="date" id="date">
+    </div>
+    <div>
+        <button onclick="addNewProduct()">Save</button>
+        <button onclick="resetForm()">Reset</button>
+    </div>
+    <!-- </form> -->
+    <hr>
+    <div>
+        <input type="text" name="search" id="search">
+        <button onclick="searchTable()">Search</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Release Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="products">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let editIndex = -1;
+
+        let mobiles = [
+            {
+                brandName: 'Samsung',
+                modelName: 'S22',
+                price: 12850,
+                date: '2022-06-15'
+            },
+            {
+                brandName: 'Apple',
+                modelName: 'iPhone 13',
+                price: 900
+            },
+            {
+                brandName: 'Xiaome',
+                modelName: 'K40',
+                price: 500,
+                date: '2021-01-20'
+            }
+        ]
+
+        function populateGrid() {
+            document.getElementById('products').innerHTML = ''
+            for (const item of mobiles) {
+                let name = item.modelName;
+                let brand = item.brandName;
+                let price = item.price; // you can also add '$' inside <td> right before $ sign too. 
+                // How to fix 'undefined' if one of objects doesn't have a specified column, in this case 'date':
+                // 1st way:
+                // let date = '---- / -- / --';
+                // if (item.date) {
+                //     date = item.date;
+                // }
+                // 2nd way: using ternary operator as well:
+                // let date = item.date ? item.date : '---- / -- / --';
+                // 3rd way: // two pipe is called logical OR, whereas single pipe is regular/bitwise.
+                // Single pipe checks both sides regardless left is false/true, with logical if left is true, no need to check right. 
+                // we can also use new logical in JS "??" unlike || with this false, 0 and space "" also considered as value.
+                let date = item.date || '---- / -- / --';
+                let index = mobiles.indexOf(item);
+
+                if (price > 10000) {  // remove $ sign from line 81 for this to work. String concat happening. 
+                    price = "10000+"
+                }
+
+                document.getElementById('products').innerHTML += ` 
+                <tr>
+                    <td>${name}</td>
+                    <td>${brand}</td>
+                    <td>$${price}</td>
+                    <td>${date}</td>
+                    <td>
+                        <button onclick="editRow('${index}')">Edit</button>
+                        <button onclick="deleteRow('${index}')">Delete</button>
+                    </td>
+                </tr>
+                `
+            }
+
+        }
+        populateGrid()
+
+
+
+        // back quote (`) functions the same way as triple-double-quote (""") does in Java. 
+        function addNewProduct() {
+            let newItem = {
+                brandName: document.getElementById('brand').value,
+                modelName: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                date: document.getElementById('date').value
+            }
+            if (editIndex == -1) {
+                // add
+                mobiles.push(newItem)
+            } else {
+                // update? Not really update, adding too. 
+                // mobiles.push(newItem) // I don't see difference between this and below line. What Sagar was tring to do here?
+                mobiles[editIndex] = newItem;
+            }
+            editIndex = -1;
+            populateGrid()
+            resetForm()
+            alert('Product added successfully!')
+
+        }
+
+        function deleteRow(index) {
+            // 1st param: remove element at specified postion, 2nd param: how many items to delete. 
+            // mobiles.pop()
+            let deleteConfirmation = confirm('Are you sure, you want to delete ' + mobiles[index].modelName + '?')
+            if (deleteConfirmation) {
+                mobiles.splice(index, 1)
+            }
+            populateGrid()
+        }
+
+        function editRow(index) {
+            //alert(index) with this line we make sure function is working. 
+            // Psuedo code is:
+            //1. Pull item from the molies array
+            let product = mobiles[index]
+            //2. assign form controls data from the object that we pulled
+            document.getElementById('name').value = product.modelName;
+            document.getElementById('brand').value = product.brandName;
+            document.getElementById('price').value = product.price;
+            document.getElementById('date').value = product.date;
+
+            editIndex = index;
+        }
+
+
+        function resetForm() {
+            document.getElementById('brand').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('date').value = '';
+
+        }
+
+        function searchTable() {
+            let searchValue = document.getElementById('search').value;
+            mobiles = mobiles.filter(x => x.brandName == searchValue);
+            populateGrid()
+        }
+
+    </script>
+</body>
+
+</html>
